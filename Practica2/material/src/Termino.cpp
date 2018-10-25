@@ -6,11 +6,11 @@
 Termino::Termino()
 {
 	palabra=null;
-	definiciones=null;
+	definiciones=Vector_Dinamico<string>int(0);
 	ndefiniciones=0;
 }
 
-Termino::Termino(string pala,string* def)
+Termino::Termino(string pala,Vector_Dinamico<string> def)
 {
 	palabra=pala;
 	definiciones=def;
@@ -34,14 +34,11 @@ void Termino::AniadirDefinicion(string definicion)
 	{
 		if (cmp(definiciones[i],definicion)!=0)
 		{
-			ndefiniciones++;
+			definiciones.resize(1);
 			definiciones[ndefiniciones]=definicion;
 		}
 	}
 }
-
-
-
 
 Termino & operator=(const Termino & original)
 {
@@ -57,7 +54,7 @@ Termino & operator=(const Termino & original)
 
 
 
-stream& operator <<(ostream &os, const Termino &p)
+ostream& operator <<(ostream &os, const Termino &p)
 {
 	os<<p.getPalabra()<<endl<<p.getnDefiniciones;
 	for(int i=0;i<p.getnDefiniciones();i++)
@@ -68,5 +65,11 @@ stream& operator <<(ostream &os, const Termino &p)
 return os;
 }
 
+istream& operator <<(istream &is, const Termino &p)
+{
+	is >> p.getPalabra >> p.getnDefiniciones;
+	for (int i=0;i<p.getnDefiniciones;i++)
+		is >> p.definiciones[i];
+}
 
 

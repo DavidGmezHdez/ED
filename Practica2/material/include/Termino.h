@@ -14,7 +14,7 @@ class Termino{
 
 private:
 	string palabra;
-	Vector_Dinamico<string*>definiciones;
+	Vector_Dinamico<string>definiciones;
 	int ndefiniciones;
 
 public:
@@ -33,7 +33,10 @@ public:
 	inline string getPalabra() const{return palabra};
 	///@brief definiciones
 	///@return devuelve las definiciones
-	inline string* getDefiniciones() const{return definiciones};
+	inline Vector_Dinamico<string> getDefiniciones() const{return definiciones};
+	///@brief definiciones con indice
+	///@return definicion del en la posicion n
+	inline string* getDefinicionesIndice(int n) const{return definiciones[i]};
 	///@brief numero de definiciones de la palabra
 	///@return devuelve el numero de definiciones
 	inline int getnDefiniciones() const{return ndefiniciones};
