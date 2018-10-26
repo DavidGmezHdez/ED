@@ -1,8 +1,12 @@
-//Termino.h
+//Diccionario.h
 //David Gómez Hernández
 //2ºB
+#include <iostream>
 #include "vector_dinamico.h"
 #include "Termino.h"
+#include <string>
+#include <vector>
+#include <Diccionario.h>
 
 
 #include <iostream>
@@ -58,7 +62,8 @@ public:
 	///@brief Dado un diccionario, el objetivo es obtener el número total
 	///de definiciones, el máximo de definiciones asociadas a una única palabra y el promedio
 	///de definiciones por palabra
-	///@param
+	///@param numero total de definiciones, numero maximo de definiciones y promedio de definiciones por palabra
+	void Recuento(int num_total, int max_defs, float promedio);
 
 }
 

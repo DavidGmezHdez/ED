@@ -6,7 +6,7 @@
 Termino::Termino()
 {
 	palabra=null;
-	definiciones=Vector_Dinamico<string>int(0);
+	definiciones=Vector_Dinamico<string>(int 0);
 	ndefiniciones=0;
 }
 
