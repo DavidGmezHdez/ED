@@ -28,6 +28,14 @@ void Termino::setPalabra(string Palabr)
 	palabra=Palabr;
 }
 
+void Termino::setnDefiniciones(int n)
+{
+	if(n<=0)
+		ndefiniciones = n;
+	else
+		cerr<<"El numero es menor que 0";
+}
+
 void Termino::AniadirDefinicion(string definicion)
 {
 	for (int i=0;i<ndefiniciones;i++)
@@ -65,11 +73,19 @@ ostream& operator <<(ostream &os, const Termino &p)
 return os;
 }
 
-istream& operator <<(istream &is, const Termino &p)
+istream& operator >>(istream &is, const Termino &p)
 {
-	is >> p.getPalabra >> p.getnDefiniciones;
-	for (int i=0;i<p.getnDefiniciones;i++)
-		is >> p.definiciones[i];
+	int definiciones;
+	string pala;
+	string definicion;
+	is >> pala >> definiciones;
+	
+	p.setPalabra(pala);
+	p.setnDefiniciones(definiciones);
+
+	for (int i=0;i<definiciones;i++)
+		is >> definicion;
+		p.AniadirDefinicion(definicion);
 }
 
 

@@ -21,7 +21,7 @@ Diccionario::Diccionario(const Diccionario &D){
 }
 
 
-Vector_Dinamico<string> getDefinicionesTermino(const Termino &T){
+Vector_Dinamico<string> Diccionario::getDefinicionesTermino(const Termino &T){
 	int indice=0;
 	if (EstaTerminoEnDiccionario(T))
 		indice = IndiceTerminoEnDiccionario(T);
@@ -30,7 +30,7 @@ Vector_Dinamico<string> getDefinicionesTermino(const Termino &T){
 		cerr<<"El termino no se encuentra en el diccionario";
 }
 
-void AniadirTermino(const Termino &T){
+void Diccionario::AniadirTermino(const Termino &T){
 	if(!EstaTerminoEnDiccionario(T)){
 		nterminos++;
 		terminos.resize(nterminos);
@@ -50,7 +50,7 @@ void AniadirTermino(const Termino &T){
 		cerr<<"Ya está aniadido el termino";
 }
 
-void EliminarTermino(const Termino &T){
+void Diccionario::EliminarTermino(const Termino &T){
 	int indice;
 	if (EstaTerminoEnDiccionario(T)){
 		indice=IndiceTerminoEnDiccionario(T);
@@ -67,6 +67,30 @@ void EliminarTermino(const Termino &T){
 }
 
 
+
+Diccionario Diccionario::filtroIntervalo(char inicial, char final){
+	Diccionario diccionario;
+	int inicio,fin;
+
+	for (int i=0;i<nterminos;i++){
+		if (strcmp(terminos[i].getPalabra()[0],inicial)==0)
+			inicio=i;
+	}
+
+	for (int j=0;j<nterminos;j++){
+		if(strcmp(terminos[i].getPalabra()[0],final)==0)
+			fin=j;
+	}
+
+	for(int i=inicio;i<fin;i++){
+		diccionario.AniadirTermino[terminos[i]];
+	}
+
+	return diccionario;
+
+}
+
+
 Termino & operator=(const Diccionario & original)
 {
 	if(this!=&original)
@@ -75,7 +99,7 @@ Termino & operator=(const Diccionario & original)
 		this->nterminos = original.nterminos;
 	}
 	else
-		cerr<<"Los terminos son los mismos"<<endl;
+		cerr<<"Los diccionarios son los mismos"<<endl;
 }
 
 
