@@ -1,40 +1,35 @@
 //Diccionario.h
 //David Gómez Hernández
 //2ºB
-#include <iostream>
-#include "vector_dinamico.h"
-#include "Termino.h"
-#include <string>
-#include <vector>
-#include <Diccionario.h>
 
-
-#include <iostream>
-#include <cmath>
-using namespace std;
 
 #ifndef DICCIONARIO_H
 #define DICCIONARIO_H
 
+#include "vector_dinamico.h"
+#include "Termino.h"
+#include <vector>
+using namespace std;
+
 class Diccionario{
 private:
-	Vector_Dinamico<Termino>terminos;
+	Vector_Dinamico<Termino> terminos;
 	int nterminos;
 public:
 	///@brief Constructor por defecto
-	Diccionario::Diccionario();
+	Diccionario();
 	///@brief Constructor por parametros
 	///@param Vector de terminos a asignar a los terminos del diccionario
-	Diccionario::Diccionario(Vector_Dinamico<Termino> terminoss);
+	Diccionario(Vector_Dinamico<Termino> terminoss);
 	///@brief Constructor por copia
 	///@param D es el diccionario al que se le hace copia. No se modifica
-	Diccionario::Diccionario(const Diccionario &D);
+	Diccionario(const Diccionario &D);
 	///@brief Consultor del numero de terminos del diccionario
 	///@return devuelve el numero de terminos
-	inline int getnTerminos() const {return nterminos};
+	inline int getnTerminos() const {return nterminos;};
 	///@brief Consultor de los terminos del diccionario
 	///@return Devuelve los terminos del diccionario
-	inline Vector_Dinamico<Termino> getTerminos() const{return terminos};
+	inline Vector_Dinamico<Termino> getTerminos() const{return terminos;};
 	///@brief Consultor de las definiciones de un termino
 	///@return las definiciones del termino
 	///@param Termino del cual se va a describir
@@ -72,9 +67,11 @@ public:
 	///@param Termino a buscar en el vector
 	///@return Devuelve el indice
 	int IndiceTerminoEnDiccionario(const Termino T);
+	friend ostream& operator<<(ostream &os, const Diccionario &p);
+	friend istream& operator>>(istream &is, const Diccionario &p);
 }
 
-	friend ostream& operator <<(ostream &os, const Diccionario &p);
-	friend istream& operator >>(istream &is, const Diccionario &p);
+	ostream& operator<<(ostream &os, const Diccionario &p);
+	istream& operator>>(istream &is, const Diccionario &p);
 
-
+#endif

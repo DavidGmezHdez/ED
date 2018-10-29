@@ -1,0 +1,33 @@
+g++ -Wall -g  -Iinclude -c  -o obj/pruebadiccionario.o src/pruebadiccionario.cpp -Iinclude
+In file included from include/Diccionario.h:10:0,
+                 from src/pruebadiccionario.cpp:1:
+include/Termino.h:19:2: error: ‘Vector_Dinamico’ is not a template
+  Vector_Dinamico<string> definiciones;
+  ^~~~~~~~~~~~~~~
+include/Termino.h:38:9: error: ‘Vector_Dinamico’ is not a template
+  inline Vector_Dinamico<string> getDefiniciones() const{return definiciones;};
+         ^~~~~~~~~~~~~~~
+include/Termino.h:41:9: error: ‘Vector_Dinamico’ is not a template
+  inline Vector_Dinamico<string> getDefinicionesIndice(int n) const{return definiciones[n];};
+         ^~~~~~~~~~~~~~~
+include/Termino.h:60:9: error: expected initializer before ‘&’ token
+  ostream& operator<<(ostream &os, const Termino &p);
+         ^
+In file included from src/pruebadiccionario.cpp:1:0:
+include/Diccionario.h:16:2: error: ‘Vector_Dinamico’ is not a template
+  Vector_Dinamico<Termino> terminos;
+  ^~~~~~~~~~~~~~~
+include/Diccionario.h:23:14: error: ‘Vector_Dinamico’ is not a template
+  Diccionario(Vector_Dinamico<Termino> terminoss);
+              ^~~~~~~~~~~~~~~
+include/Diccionario.h:32:9: error: ‘Vector_Dinamico’ is not a template
+  inline Vector_Dinamico<Termino> getTerminos() const{return terminos;};
+         ^~~~~~~~~~~~~~~
+include/Diccionario.h:36:2: error: ‘Vector_Dinamico’ is not a template
+  Vector_Dinamico<Termino> getDefinicionesTermino(const Termino &T);
+  ^~~~~~~~~~~~~~~
+include/Diccionario.h:74:9: error: expected initializer before ‘&’ token
+  ostream& operator<<(ostream &os, const Diccionario &p);
+         ^
+Makefile:31: recipe for target 'obj/pruebadiccionario.o' failed
+make: *** [obj/pruebadiccionario.o] Error 1

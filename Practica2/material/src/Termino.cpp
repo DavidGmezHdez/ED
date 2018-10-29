@@ -1,7 +1,4 @@
-#include <cassert>
-#include <string>
 #include "Termino.h"
-
 
 Termino::Termino()
 {
@@ -62,7 +59,7 @@ Termino & operator=(const Termino & original)
 
 
 
-ostream& operator <<(ostream &os, const Termino &p)
+ostream& operator<<(ostream &os, const Termino &p)
 {
 	
 	for(int i=0;i<p.getnDefiniciones();i++)
@@ -75,7 +72,7 @@ return os;
 }
 
 
-istream& operator >>(istream &is, const Termino &p)
+istream& operator>>(istream &is, const Termino &p)
 {
 	string pala;
 	string definicion;

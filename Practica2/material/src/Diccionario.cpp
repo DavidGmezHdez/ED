@@ -1,8 +1,4 @@
-#include <iostream>
-#include "vector_dinamico.h"
-#include "Termino.h"
-#include <string.h>
-#include <Diccionario.h>
+#include "Diccionario.h"
 
 
 Diccionario::Diccionario(){
@@ -92,17 +88,31 @@ Diccionario Diccionario::filtroIntervalo(char inicial, char final){
 	return diccionario;
 
 }
-/*
+
 Diccionario Diccionario::filtroPalabra(string palabra){
 	Diccionario diccionario;
 
-
-
-
-
-
+	for(int i=0;i<nterminos;i++)
+	{
+		Termino aux;
+		bool definicion=true;
+		for (int j = 0; j < terminos[i].getnDefiniciones(); j++)
+		{
+			if (terminos[i].getDefinicionesIndice(j).find(palabra)!=-1)
+			{
+				aux.setPalabra(terminos[i].getPalabra());
+				definicion = false;
+			}
+			aux.AniadirDefinicion(terminos[i].getDefinicionesIndice(j));
+		}
+		if (!definicion)
+		{
+			diccionario.AniadirTermino(aux);
+		}
+	}
+return diccionario;
 }
-*/
+
 void Diccionario::Recuento(int &num_total, int &max_defs, float &promedio){
 	num_total=max_defs=promedio=0;
 
@@ -155,14 +165,14 @@ int Diccionario::IndiceTerminoEnDiccionario(const Termino T){
 
 
 
-ostream& operator <<(ostream &os, const Diccionario &p){
+ostream& operator<<(ostream &os, const Diccionario &p){
 	for(int i=0;i<p.getnTerminos();i++){
 		os<<p.getTerminos();
 	}
 	return os;
 }
 
-istream& operator >>(istream &is, const Diccionario &p){
+istream& operator>>(istream &is, const Diccionario &p){
 	Termino tmp;
 
 	while (is.eof()){

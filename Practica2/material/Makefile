@@ -1,4 +1,4 @@
-SSRC = src
+SRC = src
 INC = include
 OBJ = obj
 BIN = bin
@@ -37,4 +37,4 @@ clean :
 	-rm $(OBJ)/* $(BIN)/* $(SRC)/~ $(INC)/~ ./*~
 
 mrproper : clean
--rm doc/html/*
+	-rm doc/html/*

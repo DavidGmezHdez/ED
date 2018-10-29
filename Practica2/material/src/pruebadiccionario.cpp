@@ -23,7 +23,7 @@ int main(int argc, char * argv[]){
    /* Exhibir aqui la funcionalidad programada para el TDA Diccionario / TDA Termino  
     Algunas sugerencias: */
     //- Obtener las definiciones asociadas a una palabra   
-   string palabra="adrian";
+   /*string palabra="adrian";
    cout<<"Las definciones de la plabra "<<palabra<<" son:"<<endl;
    for (int i=0;i<mi_diccionario.)
 
@@ -32,7 +32,9 @@ int main(int argc, char * argv[]){
     - Obtener el numero total de definiciones, el maximo de definiciones asociadas a una unica palabra y el promedio de definiciones por palabra
     - Cualquier otra funcionalidad que considereis de interes 
    
+*/
 
+   cout <<"Hola mundo"<<endl;
 
 
 
