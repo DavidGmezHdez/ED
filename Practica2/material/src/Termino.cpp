@@ -64,28 +64,30 @@ Termino & operator=(const Termino & original)
 
 ostream& operator <<(ostream &os, const Termino &p)
 {
-	os<<p.getPalabra()<<endl<<p.getnDefiniciones;
+	
 	for(int i=0;i<p.getnDefiniciones();i++)
 	{
-		os<<"Definicion numero["<<i<<"]: "<<p.getDefiniciones<<endl;
+		os<<p.getPalabra()<<";";
+		os<<<p.getDefinicionesIndice(i)<<endl;
 	}
 
 return os;
 }
 
+
 istream& operator >>(istream &is, const Termino &p)
 {
-	int definiciones;
 	string pala;
 	string definicion;
-	is >> pala >> definiciones;
-	
+	is >> pala;
 	p.setPalabra(pala);
-	p.setnDefiniciones(definiciones);
-
-	for (int i=0;i<definiciones;i++)
+	while (strcmp(p.getPalabra,pala)==0){
 		is >> definicion;
 		p.AniadirDefinicion(definicion);
+		is >> ";";
+	}
+
+return is;	
 }
 
 

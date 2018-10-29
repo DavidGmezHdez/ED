@@ -36,13 +36,12 @@ void Diccionario::AniadirTermino(const Termino &T){
 		terminos.resize(nterminos);
 		Termino aux;
 
-		for (int izda=0; izda<nterminos; izda++){
-			for (i=nterminos-1 ; i>izda ; i--){
-				if (strcmp(terminos[i].getPalabra(),T.getPalabra())<0){
-					aux = terminos[i];
-					terminos[i] = T;
-					terminos[i-1] = aux;
+		for(int i=0; i<nterminos;i++ ){
+			if(strcmp(terminos[i].getPalabra().c_str(),T.getPalabra().c_str()) > 0){
+				for(int j=terminos[i].getNumDefiniciones()-1;j>i;j--){
+					terminos[j]=terminos[j+1];
 				}
+			terminos[i]=T;
 			}
 		}
 	}
@@ -75,11 +74,15 @@ Diccionario Diccionario::filtroIntervalo(char inicial, char final){
 	for (int i=0;i<nterminos;i++){
 		if (strcmp(terminos[i].getPalabra()[0],inicial)==0)
 			inicio=i;
+		else
+			cerr<<"No se encuentra un termino que empiece por dicha letra";
 	}
 
-	for (int j=0;j<nterminos;j++){
-		if(strcmp(terminos[i].getPalabra()[0],final)==0)
+	for (int j=i;j<nterminos;j++){
+		if(strcmp(terminos[j].getPalabra()[0],final)==0)
 			fin=j;
+		else
+			cerr<<"No se encuentra un termino que empiece por dicha letra";
 	}
 
 	for(int i=inicio;i<fin;i++){
@@ -89,7 +92,29 @@ Diccionario Diccionario::filtroIntervalo(char inicial, char final){
 	return diccionario;
 
 }
+/*
+Diccionario Diccionario::filtroPalabra(string palabra){
+	Diccionario diccionario;
 
+
+
+
+
+
+}
+*/
+void Diccionario::Recuento(int &num_total, int &max_defs, float &promedio){
+	num_total=max_defs=promedio=0;
+
+	for(int i=0;i<nterminos;i++)
+	{
+		num_total+=terminos[i].getnDefiniciones();
+		if(terminos[i].getnDefiniciones > max_defs)
+			max_defs = terminos[i].getnDefiniciones; 
+	}
+
+	promedio = num_total / nterminos; 
+}
 
 Termino & operator=(const Diccionario & original)
 {
@@ -100,11 +125,13 @@ Termino & operator=(const Diccionario & original)
 	}
 	else
 		cerr<<"Los diccionarios son los mismos"<<endl;
+
+return *this;
 }
 
 
 
-bool EstaTerminoEnDiccionario(const Termino T){
+bool Diccionario::EstaTerminoEnDiccionario(const Termino T){
 	bool resultado=false;
 	for(int i=0;i<nterminos || resultado;i++){
 		if(terminos[i] == T)
@@ -114,7 +141,7 @@ bool EstaTerminoEnDiccionario(const Termino T){
 	return resultado;
 }
 
-friend int IndiceTerminoEnDiccionario(const Termino T){
+int Diccionario::IndiceTerminoEnDiccionario(const Termino T){
 	int indice=0;
 	bool esta=false;
 	for(int i=0;i<nterminos || esta;i++){
@@ -123,4 +150,26 @@ friend int IndiceTerminoEnDiccionario(const Termino T){
 			indice=i;
 	}
 	return indice;
+}
+
+
+
+
+ostream& operator <<(ostream &os, const Diccionario &p){
+	for(int i=0;i<p.getnTerminos();i++){
+		os<<p.getTerminos();
+	}
+	return os;
+}
+
+istream& operator >>(istream &is, const Diccionario &p){
+	Termino tmp;
+
+	while (is.eof()){
+		is>>tmp;
+		p.AniadirTermino(tmp);
+	}
+
+return is;
+
 }

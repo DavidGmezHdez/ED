@@ -36,7 +36,7 @@ public:
 	inline Vector_Dinamico<string> getDefiniciones() const{return definiciones};
 	///@brief definiciones con indice
 	///@return definicion del en la posicion n
-	inline string* getDefinicionesIndice(int n) const{return definiciones[i]};
+	inline string getDefinicionesIndice(int n) const{return definiciones[i]};
 	///@brief numero de definiciones de la palabra
 	///@return devuelve el numero de definiciones
 	inline int getnDefiniciones() const{return ndefiniciones};
@@ -48,7 +48,7 @@ public:
 	void AniadirDefinicion(string definicion);
     ///@brief Operador de asignación
   	///@param original es el termino el cual se iguala. No se modifica
-  	Termino & operator=(const Termino & original);
+  	Termino& operator=(const Termino & original);
 
 }
 

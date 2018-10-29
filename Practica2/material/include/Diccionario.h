@@ -63,14 +63,18 @@ public:
 	///de definiciones, el máximo de definiciones asociadas a una única palabra y el promedio
 	///de definiciones por palabra
 	///@param numero total de definiciones, numero maximo de definiciones y promedio de definiciones por palabra
-	void Recuento(int num_total, int max_defs, float promedio);
-
+	void Recuento(int &num_total, int &max_defs, float &promedio);
+	///@brief Metodo para saber si se encuentra el termino en el diccionario
+	///@param Termino a buscar
+	///@return true si se encuentra y false si no
+	bool EstaTerminoEnDiccionario(const Termino T);
+	///@brief Metodo que devuelve la posicion en la que se encuentra el termino
+	///@param Termino a buscar en el vector
+	///@return Devuelve el indice
+	int IndiceTerminoEnDiccionario(const Termino T);
 }
 
 	friend ostream& operator <<(ostream &os, const Diccionario &p);
-	friend istream& operator <<(istream &os, const Diccionario &p);
-
-	friend bool EstaTerminoEnDiccionario(const Termino T);
-	friend int IndiceTerminoEnDiccionario(const Termino T);
+	friend istream& operator >>(istream &is, const Diccionario &p);
 
 
