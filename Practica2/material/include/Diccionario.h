@@ -6,7 +6,7 @@
 #ifndef DICCIONARIO_H
 #define DICCIONARIO_H
 
-#include "vector_dinamico.h"
+#include "Vector_Dinamico.h"
 #include "Termino.h"
 #include <vector>
 using namespace std;
@@ -33,13 +33,13 @@ public:
 	///@brief Consultor de las definiciones de un termino
 	///@return las definiciones del termino
 	///@param Termino del cual se va a describir
-	Vector_Dinamico<Termino> getDefinicionesTermino(const Termino &T);
+	Vector_Dinamico<string> getDefinicionesTermino(const Termino &T);
 	///@brief Añadir un nuevo termino al vector de terminos
 	///@param Termino a añadir
-	void AniadirTermino(const Termino &T);
+	void AniadirTermino(Termino &T);
 	///@brief Eliminar un termino del vector de terminos
 	///@param Termino a eliminar
-	void EliminarTermino(const Termino &T);
+	void EliminarTermino(Termino &T);
 	///@brief Dado un diccionario, el objetivo es obtener un subconjunto de
 	///este diccionario que incluya únicamente los términos cuya palabra asociada esté en el
 	///intervalo especificado por [carácter_inicio, carácter_fin]
@@ -67,11 +67,10 @@ public:
 	///@param Termino a buscar en el vector
 	///@return Devuelve el indice
 	int IndiceTerminoEnDiccionario(const Termino T);
-	friend ostream& operator<<(ostream &os, const Diccionario &p);
-	friend istream& operator>>(istream &is, const Diccionario &p);
-}
 
-	ostream& operator<<(ostream &os, const Diccionario &p);
-	istream& operator>>(istream &is, const Diccionario &p);
+	Diccionario& operator=(const Diccionario & original);
+	friend ostream& operator<<(ostream &os, const Diccionario &p);
+	friend istream& operator>>(istream &is, Diccionario &p);
+};
 
 #endif

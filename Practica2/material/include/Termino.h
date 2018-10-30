@@ -3,14 +3,15 @@
 //2ºB
 
 
+
 #ifndef TERMINO_H
 #define TERMINO_H
 
-#include "vector_dinamico.h"
+#include "Vector_Dinamico.h"
 #include <iostream>
 #include <cmath>
 #include <cassert>
-#include <string>
+#include <string.h>
 using namespace std;
 class Termino{
 
@@ -26,7 +27,7 @@ public:
 	///@param palabra que se le va a asignar
 	///@param puntero a las definiciones que se les va a asignar
 	///@param numero de definiciones
-	Termino(string pala,string* sign);
+	Termino(string pala,Vector_Dinamico<string> def);
 	///@brief Constructor de copia
 	///@param T es el termino del que se hace copia. No se modifica
 	Termino(const Termino& T);
@@ -38,13 +39,16 @@ public:
 	inline Vector_Dinamico<string> getDefiniciones() const{return definiciones;};
 	///@brief definiciones con indice
 	///@return definicion del en la posicion n
-	inline Vector_Dinamico<string> getDefinicionesIndice(int n) const{return definiciones[n];};
+	inline string getDefinicionesIndice(int n) const{return definiciones[n];};
 	///@brief numero de definiciones de la palabra
 	///@return devuelve el numero de definiciones
 	inline int getnDefiniciones() const{return ndefiniciones;};
 	///@brief Asigna la palabra al termino
 	///@param Palabr la palabra a asignar
 	void setPalabra(string Palabr);
+	///@brief Asigna el numero de definiciones al termino
+	///@param Numero de definiciones a asignar
+	void setnDefiniciones(int n);
 	///@brief Asigna una definicion a la palabra
 	///@param definicion a asignar
 	void AniadirDefinicion(string definicion);
@@ -53,14 +57,9 @@ public:
   	Termino& operator=(const Termino & original);
 
   	friend ostream& operator<<(ostream &os, const Termino &p);
-	friend istream& operator>>(istream &os, const Termino &p);
+	friend istream& operator>>(istream &os,  Termino &p);
 
-}
-
-	ostream& operator<<(ostream &os, const Termino &p);
-	istream& operator>>(istream &os, const Termino &p);
-
-
+};
 #endif
 
 

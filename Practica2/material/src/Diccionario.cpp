@@ -2,7 +2,7 @@
 
 
 Diccionario::Diccionario(){
-	terminos=Vector_Dinamico<Termino>(int 0);
+	terminos=Vector_Dinamico<Termino>(0);
 	nterminos=0;
 }
 
@@ -19,22 +19,24 @@ Diccionario::Diccionario(const Diccionario &D){
 
 Vector_Dinamico<string> Diccionario::getDefinicionesTermino(const Termino &T){
 	int indice=0;
-	if (EstaTerminoEnDiccionario(T))
+	if(EstaTerminoEnDiccionario(T)){
 		indice = IndiceTerminoEnDiccionario(T);
 		return terminos[indice].getDefiniciones();
-	else
+	}	
+	else{
 		cerr<<"El termino no se encuentra en el diccionario";
+	}
 }
 
-void Diccionario::AniadirTermino(const Termino &T){
+void Diccionario::AniadirTermino(Termino &T){
 	if(!EstaTerminoEnDiccionario(T)){
 		nterminos++;
 		terminos.resize(nterminos);
 		Termino aux;
 
 		for(int i=0; i<nterminos;i++ ){
-			if(strcmp(terminos[i].getPalabra().c_str(),T.getPalabra().c_str()) > 0){
-				for(int j=terminos[i].getNumDefiniciones()-1;j>i;j--){
+			if(terminos[i].getPalabra().c_str()!=T.getPalabra().c_str()){
+				for(int j=terminos[i].getnDefiniciones()-1;j>i;j--){
 					terminos[j]=terminos[j+1];
 				}
 			terminos[i]=T;
@@ -45,17 +47,16 @@ void Diccionario::AniadirTermino(const Termino &T){
 		cerr<<"Ya está aniadido el termino";
 }
 
-void Diccionario::EliminarTermino(const Termino &T){
+void Diccionario::EliminarTermino(Termino &T){
 	int indice;
 	if (EstaTerminoEnDiccionario(T)){
 		indice=IndiceTerminoEnDiccionario(T);
-		terminos[i]=null;
-		for(int j=indice;j<nterminos;j++){
-			terminos[j+1]=terminos[j];
+		for(int i=indice;i<nterminos;i++){
+			terminos[i+1]=terminos[i];
 
 		}
 		nterminos--;
-		terminos.resize(nterminos)
+		terminos.resize(nterminos);
 
 	}else
 		cerr<<"El termino no se encuentra en el diccionario";
@@ -68,21 +69,21 @@ Diccionario Diccionario::filtroIntervalo(char inicial, char final){
 	int inicio,fin;
 
 	for (int i=0;i<nterminos;i++){
-		if (strcmp(terminos[i].getPalabra()[0],inicial)==0)
+		if (terminos[i].getPalabra()[0]==inicial)
 			inicio=i;
 		else
 			cerr<<"No se encuentra un termino que empiece por dicha letra";
 	}
 
-	for (int j=i;j<nterminos;j++){
-		if(strcmp(terminos[j].getPalabra()[0],final)==0)
+	for (int j=inicio;j<nterminos;j++){
+		if(terminos[j].getPalabra()[0]==final)
 			fin=j;
 		else
 			cerr<<"No se encuentra un termino que empiece por dicha letra";
 	}
 
 	for(int i=inicio;i<fin;i++){
-		diccionario.AniadirTermino[terminos[i]];
+		diccionario.AniadirTermino(terminos[i]);
 	}
 
 	return diccionario;
@@ -98,7 +99,7 @@ Diccionario Diccionario::filtroPalabra(string palabra){
 		bool definicion=true;
 		for (int j = 0; j < terminos[i].getnDefiniciones(); j++)
 		{
-			if (terminos[i].getDefinicionesIndice(j).find(palabra)!=-1)
+			if (terminos[i].getDefinicionesIndice(j).find(palabra)!=string::npos)
 			{
 				aux.setPalabra(terminos[i].getPalabra());
 				definicion = false;
@@ -119,14 +120,14 @@ void Diccionario::Recuento(int &num_total, int &max_defs, float &promedio){
 	for(int i=0;i<nterminos;i++)
 	{
 		num_total+=terminos[i].getnDefiniciones();
-		if(terminos[i].getnDefiniciones > max_defs)
-			max_defs = terminos[i].getnDefiniciones; 
+		if(terminos[i].getnDefiniciones() > max_defs)
+			max_defs = terminos[i].getnDefiniciones(); 
 	}
 
 	promedio = num_total / nterminos; 
 }
 
-Termino & operator=(const Diccionario & original)
+Diccionario& Diccionario::operator=(const Diccionario & original)
 {
 	if(this!=&original)
 	{
@@ -144,7 +145,7 @@ return *this;
 bool Diccionario::EstaTerminoEnDiccionario(const Termino T){
 	bool resultado=false;
 	for(int i=0;i<nterminos || resultado;i++){
-		if(terminos[i] == T)
+		if(terminos[i].getPalabra() == T.getPalabra())
 			resultado = true;
 
 	}
@@ -155,9 +156,12 @@ int Diccionario::IndiceTerminoEnDiccionario(const Termino T){
 	int indice=0;
 	bool esta=false;
 	for(int i=0;i<nterminos || esta;i++){
-		if(terminos[i]==T)
+		if(EstaTerminoEnDiccionario(T)){
 			esta=true;
 			indice=i;
+		}
+		else
+			cerr<<"No se encuentra el termino en el diccionario";
 	}
 	return indice;
 }
@@ -172,7 +176,7 @@ ostream& operator<<(ostream &os, const Diccionario &p){
 	return os;
 }
 
-istream& operator>>(istream &is, const Diccionario &p){
+istream& operator>>(istream &is, Diccionario &p){
 	Termino tmp;
 
 	while (is.eof()){
