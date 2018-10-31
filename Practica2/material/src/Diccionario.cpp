@@ -16,16 +16,18 @@ Diccionario::Diccionario(const Diccionario &D){
 	*this=D;
 }
 
-
+/*
 Vector_Dinamico<string> Diccionario::getDefinicionesTermino(const Termino &T){
 	int indice=0;
 	if(EstaTerminoEnDiccionario(T)){
 		indice = IndiceTerminoEnDiccionario(T);
-		return terminos[indice].getDefiniciones();
+		
 	}	
 	else{
 		cerr<<"El termino no se encuentra en el diccionario";
 	}
+
+	return terminos[indice].getDefiniciones();
 }
 
 void Diccionario::AniadirTermino(Termino &T){
@@ -168,22 +170,45 @@ int Diccionario::IndiceTerminoEnDiccionario(const Termino T){
 
 
 
-
-ostream& operator<<(ostream &os, const Diccionario &p){
-	for(int i=0;i<p.getnTerminos();i++){
-		os<<p.getTerminos();
+ostream& operator << (ostream &os, const Diccionario &p){
+	for(int i=0;i <p.getnTerminos(); i++){
+		for(int j=0;j<p.terminos[i].getnDefiniciones();j++){
+			os << p.terminos[i].getPalabra()<<";";
+            os << p.terminos[i].getDefinicionesIndice(j)<<endl;
+		}
 	}
 	return os;
 }
 
-istream& operator>>(istream &is, Diccionario &p){
-	Termino tmp;
+istream& operator >> (istream &is, Diccionario &p){
+    string aux;
+    string anterior = "\0";
+    
+    
+    getline(is, aux, ';');
+    do{
+        Termino taux;
+        do{
+            if(anterior == "\0" || aux != anterior){
+                taux.setPalabra(aux);
+                anterior = aux;
+                getline(is, aux, '\n');
+                taux.AniadirDefinicion(aux);
+            }
+            else{
+                getline(is, aux, '\n');
+                taux.AniadirDefinicion(aux);
+            }
 
-	while (is.eof()){
-		is>>tmp;
-		p.AniadirTermino(tmp);
-	}
+            if(!is.eof())
+                getline(is, aux, ';');
+        }while(aux == anterior);
 
-return is;
+        p.AniadirTermino( taux );
+        
+    }while(!is.eof());
 
+    return is;
 }
+
+*/

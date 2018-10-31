@@ -56,9 +56,6 @@ public:
   	///@param original es el termino el cual se iguala. No se modifica
   	Termino& operator=(const Termino & original);
 
-  	friend ostream& operator<<(ostream &os, const Termino &p);
-	friend istream& operator>>(istream &os,  Termino &p);
-
 };
 #endif
 

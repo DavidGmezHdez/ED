@@ -1,0 +1,1 @@
+zsh: no existe el archivo o el directorio: ./bin/pruebadiccionario

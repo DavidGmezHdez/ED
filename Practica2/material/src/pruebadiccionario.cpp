@@ -23,10 +23,14 @@ int main(int argc, char * argv[]){
    /* Exhibir aqui la funcionalidad programada para el TDA Diccionario / TDA Termino  
     Algunas sugerencias: */
     //- Obtener las definiciones asociadas a una palabra   
-   /*string palabra="adrian";
-   cout<<"Las definciones de la plabra "<<palabra<<" son:"<<endl;
-   for (int i=0;i<mi_diccionario.)
+  /*
+   Termino T;
+   T.setPalabra("adrian");
+   cout<<"Las definciones de la plabra "<<T.getPalabra()<<" son:"<<endl;
+   mi_diccionario.getDefinicionesTermino(T);
 
+*/
+/*
     - Obtener el (sub)diccionario de términos comprendidos en [caracter_inicial, caracter_final]
     - Obtener el (sub)diccionario de términos asociados a una palabra clave. Ejemplo: el diccionario de terminos asociados a "color"   
     - Obtener el numero total de definiciones, el maximo de definiciones asociadas a una unica palabra y el promedio de definiciones por palabra
