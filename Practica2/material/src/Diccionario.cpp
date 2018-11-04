@@ -44,11 +44,11 @@ void Diccionario::AniadirTermino(Termino nuevo){
 	}
         
         if(!encontrado){
-            posicion = this->nterminos-1;
+            posicion = nterminos-1;
         }
         
-        for(int i=this->nterminos-1; i>posicion; i--){
-            this->terminos[i] = this->terminos[i-1];
+        for(int i=nterminos-1; i>posicion; i--){
+            terminos[i] = terminos[i-1];
         }
         
     terminos[posicion] = nuevo;
@@ -205,30 +205,30 @@ ostream& operator << (ostream &os, const Diccionario &p){
 }
 
 istream& operator >> (istream &is, Diccionario &p){
-     string aux;
+    string aux;
     string anterior = "\0";
     
     
     getline(is, aux, ';');
     do{
-        Termino taux;
+        Termino terminoaux;
         do{
             if(anterior == "\0" || aux != anterior){
-                taux.setPalabra(aux);
+                terminoaux.setPalabra(aux);
                 anterior = aux;
                 getline(is, aux, '\n');
-                taux.AniadirDefinicion(aux);
+                terminoaux.AniadirDefinicion(aux);
             }
             else{
                 getline(is, aux, '\n');
-                taux.AniadirDefinicion(aux);
+                terminoaux.AniadirDefinicion(aux);
             }
 
             if(!is.eof())
                 getline(is, aux, ';');
         }while(aux == anterior);
 
-        p.AniadirTermino(taux);
+        p.AniadirTermino(terminoaux);
         
     }while(!is.eof());
 
