@@ -13,10 +13,10 @@ Diccionario::Diccionario(Vector_Dinamico<Termino> terminoss){
 
 Diccionario::Diccionario(const Diccionario &D){
 
-	*this=D;
+	terminos=D.getTerminos();
 }
 
-/*
+
 Vector_Dinamico<string> Diccionario::getDefinicionesTermino(const Termino &T){
 	int indice=0;
 	if(EstaTerminoEnDiccionario(T)){
@@ -30,24 +30,30 @@ Vector_Dinamico<string> Diccionario::getDefinicionesTermino(const Termino &T){
 	return terminos[indice].getDefiniciones();
 }
 
-void Diccionario::AniadirTermino(Termino &T){
-	if(!EstaTerminoEnDiccionario(T)){
-		nterminos++;
-		terminos.resize(nterminos);
-		Termino aux;
-
-		for(int i=0; i<nterminos;i++ ){
-			if(terminos[i].getPalabra().c_str()!=T.getPalabra().c_str()){
-				for(int j=terminos[i].getnDefiniciones()-1;j>i;j--){
-					terminos[j]=terminos[j+1];
-				}
-			terminos[i]=T;
-			}
-		}
+void Diccionario::AniadirTermino(Termino nuevo){
+        bool encontrado=false;
+        int posicion;
+	nterminos++;
+	terminos.resize(nterminos);
+	
+	for(int i=0; i<nterminos && !encontrado; i++){
+            if(nuevo.getPalabra() < terminos[i].getPalabra()){
+                posicion = i;
+                encontrado = true;
+            }
 	}
-	else
-		cerr<<"Ya está aniadido el termino";
-}
+        
+        if(!encontrado){
+            posicion = this->nterminos-1;
+        }
+        
+        for(int i=this->nterminos-1; i>posicion; i--){
+            this->terminos[i] = this->terminos[i-1];
+        }
+        
+    terminos[posicion] = nuevo;
+	}
+
 
 void Diccionario::EliminarTermino(Termino &T){
 	int indice;
@@ -73,15 +79,11 @@ Diccionario Diccionario::filtroIntervalo(char inicial, char final){
 	for (int i=0;i<nterminos;i++){
 		if (terminos[i].getPalabra()[0]==inicial)
 			inicio=i;
-		else
-			cerr<<"No se encuentra un termino que empiece por dicha letra";
 	}
 
 	for (int j=inicio;j<nterminos;j++){
 		if(terminos[j].getPalabra()[0]==final)
 			fin=j;
-		else
-			cerr<<"No se encuentra un termino que empiece por dicha letra";
 	}
 
 	for(int i=inicio;i<fin;i++){
@@ -134,7 +136,6 @@ Diccionario& Diccionario::operator=(const Diccionario & original)
 	if(this!=&original)
 	{
 		this->terminos = original.terminos;
-		this->nterminos = original.nterminos;
 	}
 	else
 		cerr<<"Los diccionarios son los mismos"<<endl;
@@ -168,6 +169,29 @@ int Diccionario::IndiceTerminoEnDiccionario(const Termino T){
 	return indice;
 }
 
+Vector_Dinamico<string> Diccionario::getDefinicionesPalabra(string palabra){
+    Vector_Dinamico<string> defs;
+    bool encontrada=false;
+    int indice;
+    
+    for(int i=0;i<terminos.size() || !encontrada;i++)
+    {
+        if(terminos[i].getPalabra()==palabra)
+            encontrada=true;
+            indice=i;
+    }
+    
+    if(encontrada)
+        defs=terminos[indice].getDefiniciones();
+
+    return defs;
+}
+
+
+
+
+
+
 
 
 ostream& operator << (ostream &os, const Diccionario &p){
@@ -181,7 +205,7 @@ ostream& operator << (ostream &os, const Diccionario &p){
 }
 
 istream& operator >> (istream &is, Diccionario &p){
-    string aux;
+     string aux;
     string anterior = "\0";
     
     
@@ -204,11 +228,10 @@ istream& operator >> (istream &is, Diccionario &p){
                 getline(is, aux, ';');
         }while(aux == anterior);
 
-        p.AniadirTermino( taux );
+        p.AniadirTermino(taux);
         
     }while(!is.eof());
 
-    return is;
+return is;
 }
 
-*/

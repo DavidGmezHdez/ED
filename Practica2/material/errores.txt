@@ -1,8 +1,2 @@
-g++ -o bin/pruebadiccionario obj/pruebadiccionario.o -Iinclude -Llib -ldiccionario
-obj/pruebadiccionario.o: En la función `main':
-/home/david/GitHub/ED/Practica2/material/src/pruebadiccionario.cpp:21: referencia a `operator>>(std::istream&, Diccionario&)' sin definir
-lib/libdiccionario.a(Diccionario.o): En la función `Diccionario::Diccionario(Diccionario const&)':
-/home/david/GitHub/ED/Practica2/material/src/Diccionario.cpp:16: referencia a `Diccionario::operator=(Diccionario const&)' sin definir
-collect2: error: ld returned 1 exit status
-Makefile:14: recipe for target 'bin/pruebadiccionario' failed
-make: *** [bin/pruebadiccionario] Error 1
+g++ -Wall -g  -Iinclude -c  -o obj/pruebadiccionario.o src/pruebadiccionario.cpp -Iinclude
+make: *** No hay ninguna regla para construir el objetivo 'src/Termino.cpp', necesario para 'obj/Termino.o'.  Alto.

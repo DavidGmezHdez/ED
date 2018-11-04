@@ -36,7 +36,7 @@ public:
 	Vector_Dinamico<string> getDefinicionesTermino(const Termino &T);
 	///@brief Añadir un nuevo termino al vector de terminos
 	///@param Termino a añadir
-	void AniadirTermino(Termino &T);
+	void AniadirTermino(Termino nuevo);
 	///@brief Eliminar un termino del vector de terminos
 	///@param Termino a eliminar
 	void EliminarTermino(Termino &T);
@@ -67,6 +67,10 @@ public:
 	///@param Termino a buscar en el vector
 	///@return Devuelve el indice
 	int IndiceTerminoEnDiccionario(const Termino T);
+        ///@brief Metodo para devolver las definiciones de una palabra
+        ///@param Palabra a buscar
+        ///@return devuelve las definiciones de la palabra 
+        Vector_Dinamico<string> getDefinicionesPalabra(string palabra);
 
 	Diccionario& operator=(const Diccionario & original);
 	friend ostream& operator<<(ostream &os, const Diccionario &p);
