@@ -172,7 +172,7 @@ int Diccionario::IndiceTerminoEnDiccionario(const Termino T){
 Vector_Dinamico<string> Diccionario::getDefinicionesPalabra(string palabra){
     Vector_Dinamico<string> defs;
     bool encontrada=false;
-    int indice;
+    int indice=0;
     
     for(int i=0;i<terminos.size() || !encontrada;i++)
     {
