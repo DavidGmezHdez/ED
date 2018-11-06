@@ -25,7 +25,7 @@ int main(int argc, char * argv[]){
     
    //- Obtener las definiciones asociadas a una palabra   
   
-   string palabra="adrian";
+   string palabra="a";
    cout << "Las definiciones de la palabra "<<palabra<<" son:"<<endl;
     for(int i=0; i<mi_diccionario.getDefinicionesPalabra(palabra).size(); i++){
       cout<< mi_diccionario.getDefinicionesPalabra(palabra)[i] << endl;
