@@ -34,9 +34,10 @@ int main(int argc, char * argv[]){
 		pila.push(i);
 	}
 	pila.push(1);
-
+	cout<<"La cadena original es 1231"<<endl;
 	substituye(pila,x,y);
 
+	cout<<"Al sustituir 1 por 0 la cadena obtenida es: "<<endl;
 	while(!pila.empty())
 	{
 		cout<<pila.top();

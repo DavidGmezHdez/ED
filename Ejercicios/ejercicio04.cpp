@@ -18,7 +18,11 @@ void insertar(queue<T> &P, int pos, const T &x){
 		if(contador==pos)
 			posicion=true;
 	}
-	P.push(x);
+	colaux.push(x);
+	while(!P.empty()){
+		colaux.push(P.front());
+		P.pop();
+	}
 	while(!colaux.empty()){
 		P.push(colaux.front());
 		colaux.pop();
@@ -37,7 +41,11 @@ int main()
 	cola.push(4);
 	cola.push(5);
 
+	cout<<"La cola original es: 12345"<<endl;
+
 	insertar(cola,posicion,x);
+
+	cout<<"El elemento a insertar es 4 en la posicion 3"<<endl<<"La cola final queda asi: "<<endl;
 
 	while(!cola.empty())
 	{

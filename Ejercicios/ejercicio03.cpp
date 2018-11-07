@@ -39,7 +39,11 @@ int main()
 	pila.push(4);
 	pila.push(5);
 
+	cout<<"La pila original es: 54321"<<endl;
+
 	insertar(pila,posicion,x);
+
+	cout<<"El elemento a insertar es 4 en la posicion 3"<<endl<<"La pila final queda asi: "<<endl;
 
 	while(!pila.empty())
 	{
