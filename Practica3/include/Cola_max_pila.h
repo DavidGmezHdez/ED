@@ -1,39 +1,38 @@
 //David Gómez Hernández
 //2ºB
 //Cola_max_pila.h
-
-
-#ifndef COLA_PILA_H
-#define COLA_PILA_H
+#ifndef cola_max_pila_h
+#define cola_max_pila_h
 #include <iostream>
 #include <stack>
-template<typename T>
 using namespace std;
+template<class T>
 
-class cola{
+class Cola_max{
 private:
 	stack<T>pila;
 	stack<T>pilaux;
 	stack<T>pilamax;
+	int posicion=0;
 public:
 	///@brief Constructor por defecto
-	cola();
+	Cola_max();
 	///@brief Constructor por parametros
 	///@param 1 pila 1
 	///@param 2 pila 2
-	cola(stack<T>pil1,stack<T>pil2,stack<T>pil3);
+	Cola_max(stack<T>pil1,stack<T>pil2,stack<T>pil3);
 	///@brief pila 
 	///@return pila principal
-	inline stack<T>getPila() const{return pila};
+	inline stack<T>getPila() const{return pila;}
 	///@brief pila auxiliar
 	///@return pila auxiliar
-	inline stack<T>getPilaux() const{return pilaux};
+	inline stack<T>getPilaux() const{return pilaux;}
 	///@brief pila maximos
 	///@return pila maximos
-	inline stack<T>getPilamax() const{return pilamax};
+	inline stack<T>getPilamax() const{return pilamax;}
 	///@brief constructor por copia
 	///@param cola a copiar
-	cola(cola &cola);
+	Cola_max(Cola_max &cola);
 	///@brief Insertar elemento en la cola
 	///@param elemento a instertar
 	void poner(const T x);
@@ -54,11 +53,6 @@ public:
 	///@brief Devuelve el frente de la pila de maximos
 	///@return T elemento
 	T& maximo();
-	///@brief Actualiza la pila de maximos
-	///@param Elemento a insertar en toda la pila
-	void actualizarMaximos(const T x);
-
-
-
 };
+#include "Cola_max_pila.cpp"
 #endif

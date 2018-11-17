@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Cola_max.h"
-
 using namespace std;
 
 int main(){
