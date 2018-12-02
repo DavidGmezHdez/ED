@@ -1,3 +1,7 @@
+/*Implementa una función que dada una lista l devuelva una lista que tenga los elementos de l pero en
+orden inverso.
+list<T> inversa(const list<T> &l)*/
+
 #include <iostream>
 #include <list>
 using namespace std;

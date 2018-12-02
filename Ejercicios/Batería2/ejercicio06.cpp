@@ -1,3 +1,8 @@
+/*Implementa una función que, dada una lista l de tipo T y un elemento x de tipo T, elimine el elemento
+x de todas las posiciones en las que aparezca en l. Por ejemplo: si x = 1 y l = (2, 1, 1, 1, 1, 5, 3) el
+resultado deberı́a ser (2, 5, 3)
+void elimina(list<T> &l, const T &x)*/
+
 #include <iostream>
 #include <list>
 using namespace std;

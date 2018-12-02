@@ -1,3 +1,7 @@
+/*Una variante del vector disperso es aquella en la que se puede definir cual es el valor nulo. Modifica
+la clase anterior de forma que se pueda definir cual es el valor nulo al crear un objeto. Implementa
+también cambiar_nulo(const T &n)*/
+
 #include <iostream>
 #include <list>
 #include <vector>
@@ -5,14 +9,19 @@ using namespace std;
 template <typename T>
 
 class vdisperso {
+private:
+    list< pair<int, T> > coefs;
+    int n=0;
+    T VNulo;
 public:
-vdisperso(const vector<T> &v)
+vdisperso(const vector<T> &v,const T& nulo)
 {
+    VNulo=nulo;
     typename vector<T>::const_iterator p = v.begin();
 
     for(p;p!=v.end();p++,n++)
     {
-        if(*p!=0)
+        if(*p!=VNulo)
             coefs.push_back(pair<int,T>(n,*p));
     }
 }
@@ -65,21 +74,17 @@ void cambiarNulo(const T &nulo)
     VNulo=nulo;
     typename vector<T>::const_iterator p = coefs.begin();
 
-    for(p;p!=v.end();p++,n++)
+    for(p;p!=coefs.end();p++,n++)
     {
         if(*p!=VNulo)
             coefs.push_back(pair<int,T>(n,*p));
     }
 }
-private:
-list< pair<int, T> > coefs;
-int n=0;
-T VNulo;
 };
 
 int main()
 {
-    vector<int>v, v2;
+    vector<int>vec;
 	int n;
     int nulo;
 
@@ -92,7 +97,7 @@ int main()
 		 << endl;
 	cin >> n;
 	while( n != -1){
-		v.push_back(n);
+		vec.push_back(n);
 		cout << "Introduzca valores para rellenar el vector: (-1 para acabar)" 
 			 << endl;		
 		cin >> n;
@@ -100,19 +105,18 @@ int main()
 
 
 	cout << "Vector con los valores introducidos: " << endl;
-	typename vector<int>::const_iterator p = v.begin();
+	typename vector<int>::const_iterator p = vec.begin();
 
-	for(p; p != v.end(); p++){
+	for(p; p != vec.end(); p++){
 		cout << *p<< "  ";
 	}
 
 	cout<<endl;
 
-	vdisperso <int>vdis(v);
-    cambiarNulo(nulo);
+	vdisperso <int>vdis(vec,nulo);
     cout<<"Vector disperso"<<endl;
 	vdis.imprimir_vector();
 
 	cout<<endl;
 
-}   cambiarNulo(nulo);   cambiarNulo(nulo);
+}   

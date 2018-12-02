@@ -1,3 +1,6 @@
+/*Implementa una función desencripta que haga el proceso inverso al del ejercicio anterior.
+string desencripta(string cad, const map<char, char> &codigo)*/
+
 #include <iostream>
 #include <map>
 #include <string>

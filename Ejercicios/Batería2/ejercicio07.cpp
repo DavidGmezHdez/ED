@@ -1,3 +1,6 @@
+/*Implementa una función elimina_duplicados(list<T> &l) que elimine los elementos du-
+plicados (sin ordenar previamente la lista).*/
+
 #include <iostream>
 #include <list>
 using namespace std;

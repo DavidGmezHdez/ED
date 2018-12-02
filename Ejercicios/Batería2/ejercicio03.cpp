@@ -1,3 +1,7 @@
+/*Construye una función a la que se le pase el nombre de un fichero que contiene un texto y devuelva
+un map que contenga las palabras que aparecen y el número de veces que aparece cada una.
+map<string,int> contar(string nom_fich)*/
+
 #include <iostream>
 #include <map>
 #include <string>

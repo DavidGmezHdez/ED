@@ -1,3 +1,12 @@
+/*Una forma eficiente de guardar secuencias de valores iguales consiste en guardar cada uno de los
+valores seguido del número de veces que aparece en la secuencia. Por ejemplo,
+<1,1,1,2,2,2,2,2,2,7,7,7,7,7,12,1,1,5,5>
+< (1,3), (2,6), (7,5), (12,1), (1,2), (5,2) >
+Implementa las funciones:
+list<pair<T, int> > comprimir(const list<T> &l)+
+list<T> descomprimir(const list<pair<T, int> > &lc)
+que permitan convertir entre ambas representaciones.*/
+
 #include <iostream>
 #include <list>
 #include <vector>
@@ -7,19 +16,21 @@ list<pair<T, int> > comprimir(const list<T> &l)
 {
     list<pair<T,int>> comprimido;
     typename list<T>::const_iterator p=l.begin();
-    int contador=0;
-for(p;p!=l.end();p++)
+	typename list<T>::const_iterator q=l.begin();
+    int contador=1;
+for(p;q!=l.end();p++)Prof.Miguel Garcia SilventeUniversidad de Granada
+DEPARTAMENTO DE CIENCIAS DE LA COMPUTACIÓN E INTELIGENCIA ARTIFICIAL
+ETSI Informática y Telecomunicación, C/Periodista Daniel Saucedo Aranda s/n - 18071 - Granada (España)
 {
-    cout<<*p<<" "<<*p-1;
-    if(*p!=(*p-1))
-    {
+	q++;
+    if(*p==*q)
         contador++;
-    }
-    else
+    else{
         comprimido.push_back(pair<T,int>(*p,contador));
-        contador=0;
+        contador=1;
+	}
 }
-return comprimido;
+	return comprimido;
 }
 
 template <typename T>

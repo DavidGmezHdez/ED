@@ -1,3 +1,7 @@
+/*Implementa una función bool contenida(const list<T> &l1, const list<T> &l2)
+a la que se le pasen dos listas y compruebe si la lista l1 está contenida en l2 (si los elementos apa-
+recen en la otra y en el mismo orden).*/
+
 #include <iostream>
 #include <list>
 using namespace std;

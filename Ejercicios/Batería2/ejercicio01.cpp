@@ -1,3 +1,8 @@
+/*Un método de encriptación basado en un código consiste en transformar cada letra del alfabeto por
+otra. Implementa una función encripta la que se le pasa una cadena de caracteres y un map <
+char, char > con el código y que devuelva la cadena encriptada.
+string encripta(string cad, const map<char, char> &codigo)*/
+
 #include <iostream>
 #include <map>
 #include <string>

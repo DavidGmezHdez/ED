@@ -1,3 +1,6 @@
+/*Implementa una función list<T> mezclar(const list<T> &l1, const list<T> &l2)
+que dadas dos listas ordenadas l1 y l2 devuelva una lista ordenada mezclando las dos listas.*/
+
 #include <iostream>
 #include <list>
 using namespace std;

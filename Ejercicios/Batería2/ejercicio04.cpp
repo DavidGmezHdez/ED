@@ -1,3 +1,7 @@
+/*Construye una función que dado el map del ejercicio anterior devuelva un multimap que nos permita
+consultar las palabras que aparecen un número determinado de veces.
+vector<string> veces(const map<string,int> &palabras, int num)*/
+
 #include <iostream>
 #include <map>
 #include <string>

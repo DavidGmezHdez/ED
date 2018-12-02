@@ -1,3 +1,19 @@
+/*Un vector disperso es un vector en el que la inmensa mayorı́a de sus elementos son nulos. Para
+representar ese tipo de vectores se suele utilizar como representación una lista:
+template <typename T>
+class vdisperso {
+public:
+vdisperso(const vector<T> &v);
+void asignar_coeficiente(int i, const T &x);
+vector<T> convertir() const;
+...
+private:
+list< pair<int, T> > coefs;
+int n;
+}
+De esa forma se ahorra una gran cantidad de espacio. Implementa los dos métodos indicados en la
+parte pública.*/
+
 #include <iostream>
 #include <list>
 #include <vector>
@@ -5,6 +21,9 @@ using namespace std;
 template <typename T>
 
 class vdisperso {
+private:
+    list< pair<int, T> > coefs;
+    int n=0;
 public:
 vdisperso(const vector<T> &v)
 {
@@ -61,9 +80,6 @@ void imprimir_vector()
     }
 }
 
-private:
-list< pair<int, T> > coefs;
-int n=0;
 };
 
 int main()

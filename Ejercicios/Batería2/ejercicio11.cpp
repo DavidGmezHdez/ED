@@ -1,3 +1,7 @@
+/*Implementa una función a la que se le pase una lista de enteros y un entero x de manera que cada vez
+que aparezca en una posición ese valor, se inserte x-1 en la posición siguiente.
+void inserta_antes(const list<int> &l, int x)*/
+
 #include <iostream>
 #include <list>
 using namespace std;

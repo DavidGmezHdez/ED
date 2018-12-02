@@ -1,3 +1,6 @@
+/*Resuelve el problema anterior pero sobre la lista pasada por referencia.
+void inversa(list<T> &l)*/
+
 #include <iostream>
 #include <list>
 using namespace std;
