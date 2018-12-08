@@ -1,3 +1,7 @@
+/*
+* @author: Domíngez Lorente Francisco
+* @author: Gómez Hernández David
+*/
 
 #ifndef terminoH
 #define terminoH

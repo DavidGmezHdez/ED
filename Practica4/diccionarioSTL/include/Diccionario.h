@@ -1,3 +1,8 @@
+/*
+* @author: Domíngez Lorente Francisco
+* @author: Gómez Hernández David
+*/
+
 #ifndef DICCIONARIO_H
 #define DICCIONARIO_H
 
