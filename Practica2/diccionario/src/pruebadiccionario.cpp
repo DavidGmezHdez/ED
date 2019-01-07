@@ -18,7 +18,7 @@ int main(int argc, char * argv[]){
    }
    
    Diccionario mi_diccionario;
-   f>>mi_diccionario; //Cargamos en memoria el diccionario
+   f>>mi_dicnum_totalcionario; //Cargamos en memoria el diccionario
    
    /* Exhibir aqui la funcionalidad programada para el TDA Diccionario / TDA Termino  
     Algunas sugerencias: */
